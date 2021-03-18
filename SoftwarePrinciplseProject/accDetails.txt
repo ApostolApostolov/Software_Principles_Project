@@ -1,0 +1,6 @@
+kuzan,456,pishka,pishkov,07
+kiro,1234,Kiril,petkov,05
+kazan,1235,Kazanluk,Rysev,07
+petko,123,petkan,georgiev,08
+kazan,159,kazanka,petkanka,05
+kiro,7564,kirqka,pishka,06

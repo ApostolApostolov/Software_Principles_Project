@@ -1,0 +1,11 @@
+teamId,04
+The sharpshooters
+700
+80
+Jone Smith,30
+Bob Jonson,50
+teamId,05
+The Choosen ones
+800
+20
+Kiro Petkov,20
