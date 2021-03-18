@@ -18,6 +18,8 @@ public class main {
 		
 	
 		Scanner sc = new Scanner(System.in);
+		System.out.println("bithc");
+		
 		
 		LoginPage loginPage = new LoginPage();
 		
