@@ -19,6 +19,7 @@ public class fileReader {
 	static int budget;
 	static int usedBudget;
 	static String id;
+	static TeamsDisplay team = new TeamsDisplay();
 	
 	
 
@@ -45,14 +46,40 @@ public class fileReader {
 		        	if (id.equals(userTeamId)) {
 		        		//only user's team information
 		        		
-		        		TeamsDisplay team = new TeamsDisplay();
+		        		
 		        		team.setTeamName(sc.next().trim());
 		        		team.setBudget(Integer.parseInt(sc.next().trim()));
 		        		team.setUsedBudget(Integer.parseInt(sc.next().trim()));
 		        		teamName = team.getTeamName();
 		        		budget = team.getBudget();
 		        		usedBudget = team.getUsedBudget();
-		        		displayUserTeam(teamName, budget, usedBudget);
+		        		
+		        		
+		        		do {
+		        			if (sc.hasNext()) {
+		        				String temp = sc.next().trim();
+		        				if (temp.equals("teamId")) {
+		        					break;
+		        				}
+		        				else {
+		        					team.person.add(temp);
+		    		        		team.amount.add(Integer.parseInt(sc.next().trim()));
+		        				}
+
+		        			}
+		        			else {
+		        				break;
+		        			}
+		        			
+		        		}while(true);
+		        		
+		        		displayUserTeam();
+		        		displayUserTeamMembers();
+		        		
+		        		//loop prez imenata kato gi zapazva v TeamsDisplay
+		        		//i posle pokazva
+		        		//do while loop  po nachina na pravene
+		        		
 		        		
 		        	}
 		        	
@@ -64,27 +91,28 @@ public class fileReader {
 			        	
 			        	displayBudgetData(teamName,budget,usedBudget);
 
+			        	 do {
+			        			
+					        	if (sc.hasNext()){
+					        		String temp = sc.next();
+					        		if(temp.equals("teamId")) {
+					        			break;
+					        		}
+					        		else {
+					        			String name = temp;
+							        	String amount = sc.next().trim();
+							        	displayBudgetDataTeamMember(name,amount);
+							        	
+					        		}
+					        	}
+					        	else {
+					        		break;
+					        	}
+					        	
+					        }while(true);
 				       
 		        	}
-		        	 do {
-		        			
-				        	if (sc.hasNext()){
-				        		String temp = sc.next();
-				        		if(temp.equals("teamId")) {
-				        			break;
-				        		}
-				        		else {
-				        			String name = temp;
-						        	String amount = sc.next().trim();
-						        	displayBudgetDataTeamMember(name,amount);
-						        	
-				        		}
-				        	}
-				        	else {
-				        		break;
-				        	}
-				        	
-				        }while(true);
+
 		        	
 		        }
 		        else {
@@ -118,13 +146,19 @@ public class fileReader {
 		System.out.println("Used budget: " + displayUsedBudget);
 	}
 	public static void displayBudgetDataTeamMember(String name , String amount) {
-		System.out.println(name + " " + amount);
+		System.out.println(name + ": " + amount);
 	}
 	
-	public static void displayUserTeam(String userTeam,int userTeamBudget, int userUsedTeamBudget) {
+	public static void displayUserTeam() {
 		System.out.println("");
-		System.out.println("Your Team :" + userTeam);
-		System.out.println("Budget: " + userTeamBudget);
-		System.out.println("UsedBuget: " + userUsedTeamBudget);
+		System.out.println("**"+"Team :" + team.getTeamName());
+		System.out.println("Budget: " + team.getBudget());
+		System.out.println("UsedBuget: " + team.getUsedBudget());
+		
+	}
+	public static void displayUserTeamMembers() {
+		for(int i=0; i<team.person.size(); i++) {
+			System.out.println(team.person.get(i) + " " + team.amount.get(i));
+		}
 	}
 }

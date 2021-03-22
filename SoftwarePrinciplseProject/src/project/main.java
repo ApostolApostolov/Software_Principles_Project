@@ -8,27 +8,51 @@ public class main {
 	static String firstName = "";
 	static String lastName = "";
 	static String teamId = "";
-	private static Scanner x;
+	static char userInput;
+	static int breaker = 0;
+	static TeamsDisplay userTeam = new TeamsDisplay();
+	static Scanner sc = new Scanner(System.in);
 	
 	
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		
-		
+	
 		
 	
-		Scanner sc = new Scanner(System.in);
-		System.out.println("bithc");
+
 		
 		
 		LoginPage loginPage = new LoginPage();
 		
 		
-		firstName = LoginPage.loggedUser.getFirstName();
-		lastName = LoginPage.loggedUser.getLastName();
-		teamId = LoginPage.loggedUser.getUserTeamId();
 		fileReader.budgetData();
+		System.out.println("Options");
+		System.out.println("1 - add expenses");
+		System.out.println("2 - log out");
+		System.out.println("3 - ?????");
 
+		while(breaker == 0) {
+			userInput = sc.next().charAt(0);
+			
+
+			switch(userInput) {
+			case '1':
+				System.out.println("add expenses");
+				breaker = 1;
+				addExpensesMenu();
+
+				break;
+			case '2':
+				System.out.println("Log out");
+				breaker = 1;
+				break;
+				
+			default:
+				System.out.println("Please enter valid input");
+			}
+			
+		}
 		
 		
 		
@@ -36,49 +60,57 @@ public class main {
 		
 		
 	}
-	/*	public static void teamsInfo() {
-			private static Scanner fileScanner;
-			try {
-				fileScanner = new Scanner(new File(filepath));
-				fileScanner.useDelimiter("[,\n]");
-				while(fileScanner.hasNext() && !found) {
-					userName_database = fileScanner.next();
-					userPassword_database = fileScanner.next();
-					firstName = x.next();
-					lastName = x.next();
-					teamId = x.next();
-					//please stop read until reach the symbol ":"
-					
-					
-					
-					if (userName_database.trim().equals(username.trim()) && userPassword_database.trim().equals(password.trim())) {
-
-						loggedUser.setUsername(userName_database);
-						loggedUser.setPassword(userPassword_database);
-						loggedUser.setFirstName(firstName);
-						loggedUser.setLastName(lastName);
-						loggedUser.setUserTeamId(teamId);
-						
-						found = true;
-					}
-							
-				}
-				x.close();
-				if (found == true) {
-					
-					break;
-					
-				}
-				else if (found == false ) {
-					System.out.println("Username or password is incorrect");
-				}
-			}
-			catch(Exception e) {
-				System.out.println("error");
-				e.printStackTrace();
-			}
-			}while(true);
-			
+	
+	public static void addExpensesMenu() {
+		/*
+		 * 
+		 * 	//ako budget == 0 exit
+		 * ako e pogolqm prdulji
+		 * ako vuvedenata syma e po -golqma ot budget shans za exit ili samo tova koeto mooje da plate
+		 * i plashtane na cqloto
+		 * priema samo chishla
+		 * ako ne ne chislo greshka i popoulvane ot novo
+		 * 
+		 * */
+		
+		fileReader.displayUserTeam();
+		fileReader.displayUserTeamMembers();
+		// public static void + while loop
+		System.out.println("How much would you like to add ?");
+		int amount = sc.nextInt();
+		int budget = fileReader.budget;
+		int usedBudget = fileReader.usedBudget;
+		int remBudget = budget - usedBudget;
+		
+		if (remBudget <=0) {
+			System.out.println("Your budget is 0");
+			return;
 		}
-*/
+		else if (remBudget >0 && remBudget < amount) {
+			System.out.println("Offer to compensate only the avaliable part");
+		}
+		else if (remBudget >= amount) {
+			System.out.println("just compensate the guy");
+		}
+		else {
+			System.out.println("Please enter a valid number");
+		}
+		
+		
+		
+		
+		
+		//confimation
+		//how to add date
+		//firstName = LoginPage.firstName;
+		//System.out.println(); // first name, last name, amount 
+		
+		
+		
+
+		
+
+		
+	}
+	
 }

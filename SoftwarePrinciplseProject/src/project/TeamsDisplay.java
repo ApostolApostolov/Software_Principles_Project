@@ -1,18 +1,20 @@
 package project;
 
+import java.util.ArrayList;
+
 public class TeamsDisplay {
 		static String teamName;
 		int budget;
 		int usedBudget;
-		String person;
-		String amount;
+		ArrayList<String> person = new ArrayList<String>();
+		ArrayList<Integer> amount = new ArrayList<Integer>();
 		
 	
 		TeamsDisplay(){
 			
 		}
 		
-		TeamsDisplay(String teamName,int  budget,int usedBudget, String person, String amount){
+		TeamsDisplay(String teamName,int  budget,int usedBudget, ArrayList<String> person, ArrayList<Integer> amount){
 			this.teamName = teamName;
 			this.budget = budget;
 			this.usedBudget = usedBudget;
@@ -39,18 +41,25 @@ public class TeamsDisplay {
 		public void setUsedBudget(int usedBudget) {
 			this.usedBudget = usedBudget;
 		}
-		public String getPerson() {
+		public ArrayList<String> getPerson() {
 			return person;
 		}
-		public void setPerson(String person) {
+		public void setPerson(ArrayList<String> person) {
 			this.person = person;
 		}
-		public String getAmount() {
+		public ArrayList<Integer> getAmount() {
 			return amount;
 		}
-		public void setAmount(String amount) {
+		public void setAmount(ArrayList<Integer> amount) {
 			this.amount = amount;
 		}
 		
+		public static void displayName(String[] person) {
+			
+			for (int i =0;i<person.length;i++) {
+				
+			}
+				
+		}
 		
 }

@@ -83,7 +83,6 @@ public class LoginPage {
 		}
 		catch(Exception e) {
 			System.out.println("error");
-			e.printStackTrace();
 		}
 		}while(true);
 	
